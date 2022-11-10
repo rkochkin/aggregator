@@ -3,5 +3,10 @@
   "telegram": {
     "BotAPI": ""
   },
-  "twitter": null
+  "twitter": {
+    "ApiKey"            : "",
+    "ApiSecretKey"      : "",
+    "AccessToken"       : "",
+    "AccessTokenSecret" : ""
+  }
 }

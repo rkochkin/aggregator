@@ -1,4 +1,11 @@
-package main
+package agm_twitter
+
+type TwitterConfig struct {
+	APIKey            string `json:"ApiKey"`
+	APISecretKey      string `json:"ApiSecretKey"`
+	AccessToken       string `json:"AccessToken"`
+	AccessTokenSecret string `json:"AccessTokenSecret"`
+}
 
 func show() {
 	//config := oauth1.NewConfig(ApiKey, ApiSecretKey)

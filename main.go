@@ -3,6 +3,7 @@ package main
 import (
 	"aggregator/agm_telegram"
 	"aggregator/agm_telegram/app"
+	"aggregator/agm_twitter"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -14,7 +15,7 @@ import (
 type MainConfig struct {
 	Version        string                      `json:"version"`
 	TelegramConfig agm_telegram.TelegramConfig `json:"telegram"`
-	TwitterConfig  interface{}                 `json:"twitter"`
+	TwitterConfig  agm_twitter.TwitterConfig   `json:"twitter"`
 }
 
 func GenDefaultConfig(path string) {
