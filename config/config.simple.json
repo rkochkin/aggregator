@@ -1,7 +1,8 @@
 {
   "version": "",
   "telegram": {
-    "BotAPI": ""
+    "BotAPI": "",
+    "ACL": []
   },
   "twitter": {
     "ApiKey"            : "",

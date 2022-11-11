@@ -7,7 +7,10 @@ import (
 	"log"
 )
 
-func RpnCalcApp(message *tgbotapi.Message) tgbotapi.MessageConfig {
+type RpnCalcApp struct {
+}
+
+func (r RpnCalcApp) Proc(message *tgbotapi.Message) tgbotapi.MessageConfig {
 	log.Printf("[%s] %s", message.From.UserName, message.Text)
 	st := stack.New()
 	result := rpncalc.Rpn(message.Text, st)

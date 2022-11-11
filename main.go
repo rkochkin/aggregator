@@ -68,6 +68,6 @@ func main() {
 		panic(err)
 	}
 
-	t := agm_telegram.NewTelegram(config.TelegramConfig, app.RpnCalcApp)
+	t := agm_telegram.NewTelegram(config.TelegramConfig, app.YeeLightApp{})
 	t.Run()
 }

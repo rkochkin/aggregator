@@ -1,23 +1,26 @@
 package agm_telegram
 
 import (
+	"aggregator/agm_telegram/app"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"golang.org/x/exp/slices"
 	"log"
 )
 
 type TelegramConfig struct {
-	BotApiKey string `json:"BotAPI"`
+	BotApiKey string  `json:"BotAPI"`
+	ACL       []int64 `json:"ACL"`
 }
 
 type TelegramOnUpdateHandler func(message *tgbotapi.Message) tgbotapi.MessageConfig
 
 type Telegram struct {
-	Config          TelegramConfig
-	OnUpdateHandler TelegramOnUpdateHandler
+	Config TelegramConfig
+	App    app.TelegramApp
 }
 
-func NewTelegram(config TelegramConfig, handler TelegramOnUpdateHandler) Telegram {
-	return Telegram{Config: config, OnUpdateHandler: handler}
+func NewTelegram(config TelegramConfig, handler app.TelegramApp) Telegram {
+	return Telegram{Config: config, App: handler}
 }
 
 func (t *Telegram) Run() {
@@ -37,7 +40,10 @@ func (t *Telegram) Run() {
 
 	for update := range updates {
 		if update.Message != nil { // If we got a message
-			bot.Send(t.OnUpdateHandler(update.Message))
+			idx := slices.IndexFunc(t.Config.ACL, func(e int64) bool { return e == update.Message.From.ID })
+			if idx != -1 {
+				bot.Send(t.App.Proc(update.Message))
+			}
 		}
 	}
 }
