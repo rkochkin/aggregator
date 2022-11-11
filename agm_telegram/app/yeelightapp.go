@@ -22,18 +22,28 @@ func (a YeeLightApp) Proc(message *tgbotapi.Message) tgbotapi.MessageConfig {
 	}
 
 	switch message.Text {
-	case "/on":
+	case "вкл":
 		err = bulb.PowerOn(1000)
 		if err != nil {
 			fmt.Println(err)
 		}
-	case "/off":
+	case "выкл":
 		err = bulb.PowerOff(1000)
 		if err != nil {
 			fmt.Println(err)
 		}
-	case "/sunset":
+	case "ярк 100":
 		err = bulb.Brightness(100, 1000)
+		if err != nil {
+			fmt.Println(err)
+		}
+	case "ярк 50":
+		err = bulb.Brightness(50, 1000)
+		if err != nil {
+			fmt.Println(err)
+		}
+	case "ярк 10":
+		err = bulb.Brightness(10, 1000)
 		if err != nil {
 			fmt.Println(err)
 		}
