@@ -27,6 +27,7 @@ var numericKeyboard = tgbotapi.NewReplyKeyboard(
 	tgbotapi.NewKeyboardButtonRow(
 		tgbotapi.NewKeyboardButton("вкл"),
 		tgbotapi.NewKeyboardButton("выкл"),
+		tgbotapi.NewKeyboardButton("закат"),
 	),
 	tgbotapi.NewKeyboardButtonRow(
 		tgbotapi.NewKeyboardButton("ярк 10"),

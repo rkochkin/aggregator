@@ -38,20 +38,21 @@ func GenDefaultConfig(path string) {
 
 func main() {
 	resetConfigs := flag.Bool("reset-configs", false, "Restore all default configs")
+	configPath := flag.String("config", "config/config.json", "Config path")
 	flag.Parse()
 
 	if *resetConfigs {
-		GenDefaultConfig("config/config.json")
+		GenDefaultConfig(*configPath)
 	}
 
 	// Open our jsonFile
-	jsonFile, err := os.Open("config/config.json")
+	jsonFile, err := os.Open(*configPath)
 	// if we os.Open returns an error then handle it
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	fmt.Println("Successfully Opened config/config.json")
+	fmt.Println("Successfully Opened " + *configPath)
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
 
