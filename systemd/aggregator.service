@@ -1,0 +1,15 @@
+[Unit]
+Description=Aggreggator for home automatization
+After=network.target network-online.target syslog.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/bin
+Restart=always
+
+ExecStart=/usr/local/bin/aggregator -config=/etc/aggregator.conf
+
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target 
